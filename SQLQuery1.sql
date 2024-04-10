@@ -46,10 +46,11 @@ CREATE TABLE freight
 	CONSTRAINT pk_manifestId PRIMARY KEY (manifestId)
 );
 
-CREATE TABLE employee --required due to the courierSurvey table needing an employee id and name.
+CREATE TABLE employee
 (
 	employeeId INT NOT NULL IDENTITY,
-	employeeName NVARCHAR(120) NOT NULL,
+	employeeUsername NVARCHAR(120) NOT NULL,
+	employeePassword NVARCHAR(120) NOT NULL,
 	employeeType NVARCHAR(120) NOT NULL,
 	CONSTRAINT pk_employeeId PRIMARY KEY (employeeId)
 );
@@ -57,11 +58,9 @@ CREATE TABLE employee --required due to the courierSurvey table needing an emplo
 CREATE TABLE courierSurvey
 (
 	courierSurveyId INT NOT NULL IDENTITY,
-	skidCount INT NOT NULL,
-	dateArrived DATETIME NOT NULL,
-	employeeId INT NOT NULL,
+	nameSurvey NVARCHAR(120) NOT NULL,
+	emailAddress NVARCHAR(120) NOT NULL,
+	feedback NVARCHAR(8000) NOT NULL,
 	
 	CONSTRAINT pk_courierSurveyId PRIMARY KEY (courierSurveyId),
-	CONSTRAINT fr_employee FOREIGN KEY (employeeId) --will give access to the Employee list. Could replace with a string to fill out if necessary.
-		REFERENCES employee(employeeId)
 );
