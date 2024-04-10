@@ -50,6 +50,7 @@ CREATE TABLE employee --required due to the courierSurvey table needing an emplo
 (
 	employeeId INT NOT NULL IDENTITY,
 	employeeName NVARCHAR(120) NOT NULL,
+	employeeType NVARCHAR(120) NOT NULL,
 	CONSTRAINT pk_employeeId PRIMARY KEY (employeeId)
 );
 
